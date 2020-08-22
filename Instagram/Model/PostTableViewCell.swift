@@ -14,10 +14,16 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var likeLabel: UILabel!
+    @IBOutlet weak var commentButton: UIButton!
+    @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
 
 
+    @IBOutlet weak var commentText1: UILabel!
+    @IBOutlet weak var commentText2: UILabel!
+    @IBOutlet weak var commentText3: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -50,6 +56,10 @@ class PostTableViewCell: UITableViewCell {
         // いいね数の表示
         let likeNumber = postData.likes.count
         likeLabel.text = "\(likeNumber)"
+
+        //　コメント数の表示
+        let commentNumber = postData.comments.count
+        commentLabel.text = "\(commentNumber)"
 
         // いいねボタンの表示
         if postData.isLiked {

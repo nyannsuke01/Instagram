@@ -15,7 +15,6 @@
 		CE3904B424E1A85900C1207A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3904B324E1A85900C1207A /* AppDelegate.swift */; };
 		CE3904B624E1A85900C1207A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3904B524E1A85900C1207A /* SceneDelegate.swift */; };
 		CE3904BB24E1A85900C1207A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3904B924E1A85900C1207A /* Main.storyboard */; };
-		CE3904BD24E1A85C00C1207A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3904BC24E1A85C00C1207A /* Assets.xcassets */; };
 		CE3904C024E1A85C00C1207A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3904BE24E1A85C00C1207A /* LaunchScreen.storyboard */; };
 		CE3904C824E1A8D600C1207A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3904C724E1A8D600C1207A /* LoginViewController.swift */; };
 		CE3904CA24E1A8EB00C1207A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3904C924E1A8EB00C1207A /* HomeViewController.swift */; };
@@ -23,6 +22,7 @@
 		CE3904CE24E1A91400C1207A /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3904CD24E1A91400C1207A /* PostViewController.swift */; };
 		CE3904D024E1A92A00C1207A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3904CF24E1A92A00C1207A /* SettingViewController.swift */; };
 		CE3904D424E1ADF200C1207A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3904D324E1ADF200C1207A /* TabBarController.swift */; };
+		CE52908E24F0F8C200DD8DAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE52908D24F0F8C200DD8DAA /* Assets.xcassets */; };
 		CECBBBE424E40D23008424CC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CECBBBE324E40D23008424CC /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +38,6 @@
 		CE3904B324E1A85900C1207A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE3904B524E1A85900C1207A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE3904BA24E1A85900C1207A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CE3904BC24E1A85C00C1207A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE3904BF24E1A85C00C1207A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE3904C124E1A85C00C1207A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE3904C724E1A8D600C1207A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		CE3904CD24E1A91400C1207A /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		CE3904CF24E1A92A00C1207A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		CE3904D324E1ADF200C1207A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		CE52908D24F0F8C200DD8DAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CECBBBE324E40D23008424CC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				CE3904B924E1A85900C1207A /* Main.storyboard */,
-				CE3904BC24E1A85C00C1207A /* Assets.xcassets */,
+				CE52908D24F0F8C200DD8DAA /* Assets.xcassets */,
 				CE3904BE24E1A85C00C1207A /* LaunchScreen.storyboard */,
 			);
 			path = View;
@@ -207,9 +207,9 @@
 			files = (
 				CE3904C024E1A85C00C1207A /* LaunchScreen.storyboard in Resources */,
 				CE1E7C4D24EE229200A7887D /* PostTableViewCell.xib in Resources */,
-				CE3904BD24E1A85C00C1207A /* Assets.xcassets in Resources */,
 				CECBBBE424E40D23008424CC /* GoogleService-Info.plist in Resources */,
 				CE3904BB24E1A85900C1207A /* Main.storyboard in Resources */,
+				CE52908E24F0F8C200DD8DAA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
