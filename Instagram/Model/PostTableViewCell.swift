@@ -19,7 +19,9 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
 
-
+    //コメント表示に関するUI部品
+    @IBOutlet weak var commentTexts: UIStackView!
+    @IBOutlet weak var commentDisplayButton: UIButton!
     @IBOutlet weak var commentText1: UILabel!
     @IBOutlet weak var commentText2: UILabel!
     @IBOutlet weak var commentText3: UILabel!
@@ -27,12 +29,24 @@ class PostTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        //コメントを非表示で初期化
+        commentTexts.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    @IBAction func showCommentButton(_ sender: Any) {
+        if commentTexts.isHidden {
+            commentDisplayButton.setTitle("非表示", for: .normal)
+
+        } else {
+            commentDisplayButton.setTitle("表示", for: .normal)
+        }
+        //　表示/非表示の切り替え
+        commentTexts.isHidden = !commentTexts.isHidden
     }
 
     func setPostData(_ postData: PostData) {
