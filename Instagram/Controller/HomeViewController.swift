@@ -9,9 +9,17 @@
 import UIKit
 import Firebase
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+
+    @IBOutlet weak var submitForm: UIView!
+    @IBOutlet weak var submitTextField: UITextField!
+    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var submitButtonBottomConstraint: NSLayoutConstraint!
+
+    var submitFormY:CGFloat = 0.0
+
     // 投稿データを格納する配列
     var postArray: [PostData] = []
     // Firestoreのリスナー
@@ -22,6 +30,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         tableView.delegate = self
         tableView.dataSource = self
+        submitTextField.delegate = self
+
+        // 通知センターの取得
+        let notification =  NotificationCenter.default
+
+        // keyboardのframe変化時
+        notification.addObserver(self,
+                                 selector: #selector(self.keyboardChangeFrame(_:)),
+                                 name: UIResponder.keyboardDidChangeFrameNotification,
+                                 object: nil)
+
+        // keyboard登場時
+        notification.addObserver(self,
+                                 selector: #selector(self.keyboardWillBeShow),
+                                 name: UIResponder.keyboardWillShowNotification,
+                                 object: nil)
+
+        // keyboard退場時
+        notification.addObserver(self,
+                                 selector: #selector(self.keyboardWillBeHide(_:)),
+                                 name: UIResponder.keyboardDidHideNotification,
+                                 object: nil)
 
         // カスタムセルを登録する
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
@@ -62,6 +92,34 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 tableView.reloadData()
             }
         }
+    }
+    // キーボードのフレーム変化時の処理
+    @objc func keyboardChangeFrame(_ notification: NSNotification) {
+        // keyboardのframeを取得
+        let userInfo = (notification as NSNotification).userInfo!
+        let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+
+        // submitFormの最大Y座標と、keybordの最小Y座標の差分を計算
+        let diff = self.submitForm.frame.maxY -  keyboardFrame.minY
+
+        if (diff > 0) {
+            //submitFormのbottomの制約に差分をプラス
+            self.submitButtonBottomConstraint.constant += diff
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    // キーボード登場時の処理
+    @objc func keyboardWillBeShow(_ notification: NSNotification) {
+        // 現在のsubmitFormの最大Y座標を保存
+        submitFormY = self.submitForm.frame.maxY
+    }
+
+    //キーボードが退場時の処理
+    @objc func keyboardWillBeHide(_ notification: NSNotification) {
+        //submitFormのbottomの制約を元に戻す
+        self.submitButtonBottomConstraint.constant = -submitFormY
+        self.view.layoutIfNeeded()
     }
     
 
@@ -126,10 +184,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         // 配列からタップされたインデックスのデータを取り出す
         let postData = postArray[indexPath!.row]
-        
+
+        // キーボードを表示
+        submitTextField.becomeFirstResponder()
+
 
 
     }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        // キーボードをしまう
+        //submitTextField.endEditing(true)
+        submitTextField.resignFirstResponder()
+        return true
+    }
+
 
     // セル内の表示/非表示ボタンがタップされた時に呼ばれるメソッド
     @objc func displayCommentButton(_ sender: UIButton, forEvent event: UIEvent) {

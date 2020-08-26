@@ -25,6 +25,11 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var commentText1: UILabel!
     @IBOutlet weak var commentText2: UILabel!
     @IBOutlet weak var commentText3: UILabel!
+    //コメントテキスト送信フォームに関するUI部品
+    @IBOutlet weak var submitForm: UIView!
+    @IBOutlet weak var submitTextField: UITextField!
+    @IBOutlet weak var submitFormBottomConstraints: NSLayoutConstraint!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,6 +43,12 @@ class PostTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
+    @IBAction func subumitTextButton(_ sender: Any) {
+
+    }
+
+
     @IBAction func showCommentButton(_ sender: Any) {
         if commentTexts.isHidden {
             commentDisplayButton.setTitle("非表示", for: .normal)

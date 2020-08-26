@@ -19,24 +19,60 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e6o-9w-oKu">
+                                <rect key="frame" x="0.0" y="904" width="414" height="81"/>
+                                <subviews>
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f0R-Hg-joN">
+                                        <rect key="frame" x="3" y="8" width="338" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Owf-kS-RfX">
+                                        <rect key="frame" x="349" y="9" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="6ls-3a-XZG"/>
+                                        </constraints>
+                                        <state key="normal" title="送信"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="f0R-Hg-joN" firstAttribute="top" secondItem="e6o-9w-oKu" secondAttribute="topMargin" constant="9" id="8Hv-rO-mQT"/>
+                                    <constraint firstItem="Owf-kS-RfX" firstAttribute="centerY" secondItem="e6o-9w-oKu" secondAttribute="centerY" constant="-16.5" id="GlE-Bp-qwf"/>
+                                    <constraint firstItem="Owf-kS-RfX" firstAttribute="trailing" secondItem="e6o-9w-oKu" secondAttribute="trailingMargin" constant="-11" id="Ice-vx-hxi"/>
+                                    <constraint firstItem="f0R-Hg-joN" firstAttribute="baseline" secondItem="Owf-kS-RfX" secondAttribute="firstBaseline" id="MBd-MM-gha"/>
+                                    <constraint firstAttribute="bottom" secondItem="f0R-Hg-joN" secondAttribute="bottom" constant="39" id="N0H-MX-XAZ"/>
+                                    <constraint firstItem="f0R-Hg-joN" firstAttribute="leading" secondItem="e6o-9w-oKu" secondAttribute="leading" constant="3" id="R5C-et-XCB"/>
+                                    <constraint firstItem="Owf-kS-RfX" firstAttribute="bottom" secondItem="e6o-9w-oKu" secondAttribute="bottomMargin" constant="40" id="lIw-Is-pzS"/>
+                                    <constraint firstItem="Owf-kS-RfX" firstAttribute="leading" secondItem="f0R-Hg-joN" secondAttribute="trailing" constant="8" symbolic="YES" id="rE9-Qo-O4B"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="wXI-JB-kPS" firstAttribute="leading" secondItem="0Ys-du-uhy" secondAttribute="leading" id="4Y1-03-LMk"/>
                             <constraint firstItem="wXI-JB-kPS" firstAttribute="top" secondItem="0Ys-du-uhy" secondAttribute="top" id="8B3-cn-Gs1"/>
+                            <constraint firstAttribute="bottom" secondItem="e6o-9w-oKu" secondAttribute="bottom" constant="-89" id="DQu-Wv-AY8"/>
+                            <constraint firstItem="e6o-9w-oKu" firstAttribute="leading" secondItem="0Ys-du-uhy" secondAttribute="leading" id="b13-7M-7QX"/>
                             <constraint firstItem="0Ys-du-uhy" firstAttribute="bottom" secondItem="wXI-JB-kPS" secondAttribute="bottom" id="bHS-ba-Ky6"/>
+                            <constraint firstItem="e6o-9w-oKu" firstAttribute="trailing" secondItem="0Ys-du-uhy" secondAttribute="trailing" id="jYx-Oa-Ozd"/>
                             <constraint firstItem="0Ys-du-uhy" firstAttribute="trailing" secondItem="wXI-JB-kPS" secondAttribute="trailing" id="m9J-iU-yDg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Ys-du-uhy"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="ホーム" image="home" id="jcL-sS-MrD"/>
                     <connections>
+                        <outlet property="sendButton" destination="Owf-kS-RfX" id="maZ-rN-vHR"/>
+                        <outlet property="submitButtonBottomConstraint" destination="DQu-Wv-AY8" id="TCk-8b-7ms"/>
+                        <outlet property="submitForm" destination="e6o-9w-oKu" id="7a9-Ah-HaC"/>
+                        <outlet property="submitTextField" destination="f0R-Hg-joN" id="cGY-81-sTJ"/>
                         <outlet property="tableView" destination="wXI-JB-kPS" id="HIm-ib-0gq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQM-la-OX5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-706" y="852"/>
+            <point key="canvasLocation" x="-707.24637681159425" y="851.78571428571422"/>
         </scene>
         <!--投稿-->
         <scene sceneID="rAi-Sz-HcY">
@@ -98,21 +134,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4l-J8-ANM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138" y="860"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Gmy-HK-Gym">
-            <objects>
-                <viewController id="LOW-tI-fLg" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fix-gH-x6e">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="pHF-A5-xJr"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kdj-Zs-Pko" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-707" y="1541"/>
         </scene>
         <!--Post View Controller-->
         <scene sceneID="rLe-dC-1yi">
