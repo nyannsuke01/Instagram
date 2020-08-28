@@ -19,6 +19,18 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <view alpha="0.25" contentMode="scaleToFill" id="T9R-lK-61H">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <viewLayoutGuide key="safeArea" id="3Ec-Z6-Pnm"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="KXT-mT-k8A" appends="YES" id="bsd-Ro-7Ah"/>
+                                    <outletCollection property="gestureRecognizers" destination="KXT-mT-k8A" appends="YES" id="96o-WZ-aSB"/>
+                                    <outletCollection property="gestureRecognizers" destination="KXT-mT-k8A" appends="YES" id="715-P7-J1w"/>
+                                </connections>
+                            </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e6o-9w-oKu">
                                 <rect key="frame" x="0.0" y="904" width="414" height="81"/>
                                 <subviews>
@@ -33,6 +45,9 @@
                                             <constraint firstAttribute="width" constant="46" id="6ls-3a-XZG"/>
                                         </constraints>
                                         <state key="normal" title="送信"/>
+                                        <connections>
+                                            <action selector="sendButton:" destination="ajn-oJ-d5Y" eventType="touchUpInside" id="A2j-FP-XDV"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -60,6 +75,9 @@
                             <constraint firstItem="0Ys-du-uhy" firstAttribute="trailing" secondItem="wXI-JB-kPS" secondAttribute="trailing" id="m9J-iU-yDg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Ys-du-uhy"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="KXT-mT-k8A" appends="YES" id="f5e-SF-Mwq"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="ホーム" image="home" id="jcL-sS-MrD"/>
                     <connections>
@@ -68,9 +86,15 @@
                         <outlet property="submitForm" destination="e6o-9w-oKu" id="7a9-Ah-HaC"/>
                         <outlet property="submitTextField" destination="f0R-Hg-joN" id="cGY-81-sTJ"/>
                         <outlet property="tableView" destination="wXI-JB-kPS" id="HIm-ib-0gq"/>
+                        <outlet property="textInputBackground" destination="T9R-lK-61H" id="nox-Ek-mWD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQM-la-OX5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="KXT-mT-k8A">
+                    <connections>
+                        <action selector="closeKeyboard:" destination="ajn-oJ-d5Y" id="RcD-bi-B8u"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-707.24637681159425" y="851.78571428571422"/>
         </scene>

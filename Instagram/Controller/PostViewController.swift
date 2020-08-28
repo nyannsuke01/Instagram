@@ -41,7 +41,6 @@ class PostViewController: UIViewController {
                 UIApplication.shared.windows.first{ $0.isKeyWindow }?.rootViewController?.dismiss(animated: true, completion: nil)
                 return
             }
-            //画像が保存できる
             // FireStoreに投稿データを保存する
             let name = Auth.auth().currentUser?.displayName
 

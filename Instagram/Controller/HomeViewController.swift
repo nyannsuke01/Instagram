@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
@@ -17,8 +18,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var submitTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var submitButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var textInputBackground: UIView!
 
     var submitFormY:CGFloat = 0.0
+
+    var postData: PostData!
 
     // 投稿データを格納する配列
     var postArray: [PostData] = []
@@ -31,6 +35,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         submitTextField.delegate = self
+
+        //入力時の背景を非表示で初期化
+        textInputBackground.isHidden = true
+
 
         // 通知センターの取得
         let notification =  NotificationCenter.default
@@ -93,6 +101,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
     }
+
     // キーボードのフレーム変化時の処理
     @objc func keyboardChangeFrame(_ notification: NSNotification) {
         // keyboardのframeを取得
@@ -188,17 +197,47 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // キーボードを表示
         submitTextField.becomeFirstResponder()
 
-
+        //Viewをテキストフィールドの背景に表示させて他操作を不可にする
+        textInputBackground.isHidden = false
 
     }
 
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    @IBAction func closeKeyboard(_ sender: Any) {
+        //　タップされたものがtextInputBackgroundならば、キーボードを閉じる
+        if textInputBackground is UIView {
+            // キーボードをしまう
+            view.endEditing(true)
+            textInputBackground.isHidden = true
+        }
+
+    }
+
+    @IBAction func sendButton(_ sender: Any) {
+        print("DEBUG_PRINT: 送信ボタンがタップされました")
+        //　投稿者名を現在の表示名に
+        let commentName = Auth.auth().currentUser?.displayName
+        let postDic = ["comment": "\(commentName!) : \(self.submitTextField.text)",] as [String: Any]
+        let comment = postDic["comment"]
+        let updateValue: FieldValue = FieldValue.arrayUnion([comment!])
+
+        //保存処理
+        let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
+        postRef.updateData(["comment":updateValue])
+
+        SVProgressHUD.show()
+
+        //ラベルに投稿を反映させる
+        
+
         // キーボードをしまう
-        //submitTextField.endEditing(true)
-        submitTextField.resignFirstResponder()
-        return true
-    }
+        view.endEditing(true)
+        textInputBackground.isHidden = true
 
+        //HUDで投稿完了を表示する
+        SVProgressHUD.showSuccess(withStatus: "コメントを投稿しました")
+        print("DEBUG_PRINT: コメント投稿完了")
+
+    }
 
     // セル内の表示/非表示ボタンがタップされた時に呼ばれるメソッド
     @objc func displayCommentButton(_ sender: UIButton, forEvent event: UIEvent) {
