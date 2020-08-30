@@ -22,13 +22,7 @@ class PostTableViewCell: UITableViewCell {
     //コメント表示に関するUI部品
     @IBOutlet weak var commentTexts: UIStackView!
     @IBOutlet weak var commentDisplayButton: UIButton!
-    @IBOutlet weak var commentText1: UILabel!
-    @IBOutlet weak var commentText2: UILabel!
-    @IBOutlet weak var commentText3: UILabel!
-    //コメントテキスト送信フォームに関するUI部品
-    @IBOutlet weak var submitForm: UIView!
-    @IBOutlet weak var submitTextField: UITextField!
-    @IBOutlet weak var submitFormBottomConstraints: NSLayoutConstraint!
+    @IBOutlet weak var commentTextLabel: UILabel!
 
     
     override func awakeFromNib() {
@@ -43,11 +37,6 @@ class PostTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
-    @IBAction func subumitTextButton(_ sender: Any) {
-
-    }
-
 
     @IBAction func showCommentButton(_ sender: Any) {
         if commentTexts.isHidden {
@@ -67,7 +56,7 @@ class PostTableViewCell: UITableViewCell {
         postImageView.sd_setImage(with: imageRef)
 
         // キャプションの表示
-        self.captionLabel.text = "\(postData.name!) : \(postData.caption!)"
+        self.captionLabel.text? = "\(postData.name!) : \(postData.caption!)"
 
         // 日時の表示
         self.dateLabel.text = ""
@@ -95,6 +84,9 @@ class PostTableViewCell: UITableViewCell {
             self.likeButton.setImage(buttonImage, for: .normal)
         }
 
+        //コメントの表示
+        let commentString = postData.comments.joined(separator: "\n")
+        self.commentTextLabel.text = "\(commentString)"
     }
-    
+
 }

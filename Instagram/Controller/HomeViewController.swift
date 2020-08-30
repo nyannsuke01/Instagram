@@ -130,7 +130,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.submitButtonBottomConstraint.constant = -submitFormY
         self.view.layoutIfNeeded()
     }
-    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return postArray.count
@@ -194,6 +193,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // 配列からタップされたインデックスのデータを取り出す
         let postData = postArray[indexPath!.row]
 
+        self.postData = postData
         // キーボードを表示
         submitTextField.becomeFirstResponder()
 
@@ -204,31 +204,45 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBAction func closeKeyboard(_ sender: Any) {
         //　タップされたものがtextInputBackgroundならば、キーボードを閉じる
-        if textInputBackground is UIView {
+        if textInputBackground != nil {
             // キーボードをしまう
             view.endEditing(true)
             textInputBackground.isHidden = true
         }
+    }
 
+    private func updateButtonState() {
+        //入力された余計な空白を削除
+        let inputString = submitTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        //入力文字列が空ならNextButton非活性
+        if inputString!.isEmpty {
+            sendButton.isEnabled = false
+        } else {
+            sendButton.isEnabled = true
+        }
+    }
+    //編集中に空欄チェックを行う（submitTextFieldを空白で表示させないため）
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        updateButtonState()
+        return true
     }
 
     @IBAction func sendButton(_ sender: Any) {
         print("DEBUG_PRINT: 送信ボタンがタップされました")
-        //　投稿者名を現在の表示名に
+        //　投稿者名を現在の表示名で登録
         let commentName = Auth.auth().currentUser?.displayName
-        let postDic = ["comment": "\(commentName!) : \(self.submitTextField.text)",] as [String: Any]
-        let comment = postDic["comment"]
-        let updateValue: FieldValue = FieldValue.arrayUnion([comment!])
+        // ["comment":"入力された文字"]の形でpostDicに登録
+        let postDic = ["comments": "\(commentName!) : \(self.submitTextField.text!)",] as [String: Any]
+        //　コメントを取り出す
+        let comments = postDic["comments"]
+        let updateValue: FieldValue = FieldValue.arrayUnion([comments!])
 
         //保存処理
         let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
-        postRef.updateData(["comment":updateValue])
+        postRef.updateData(["comments":updateValue])
 
         SVProgressHUD.show()
-
-        //ラベルに投稿を反映させる
         
-
         // キーボードをしまう
         view.endEditing(true)
         textInputBackground.isHidden = true

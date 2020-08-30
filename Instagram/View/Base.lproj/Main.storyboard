@@ -31,16 +31,16 @@
                                     <outletCollection property="gestureRecognizers" destination="KXT-mT-k8A" appends="YES" id="715-P7-J1w"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e6o-9w-oKu">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6o-9w-oKu">
                                 <rect key="frame" x="0.0" y="904" width="414" height="81"/>
                                 <subviews>
-                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f0R-Hg-joN">
-                                        <rect key="frame" x="3" y="8" width="338" height="34"/>
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f0R-Hg-joN">
+                                        <rect key="frame" x="3" y="8" width="349" height="65"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Owf-kS-RfX">
-                                        <rect key="frame" x="349" y="9" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Owf-kS-RfX">
+                                        <rect key="frame" x="360" y="8" width="46" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="46" id="6ls-3a-XZG"/>
                                         </constraints>
@@ -52,14 +52,17 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="f0R-Hg-joN" firstAttribute="top" secondItem="e6o-9w-oKu" secondAttribute="topMargin" constant="9" id="8Hv-rO-mQT"/>
-                                    <constraint firstItem="Owf-kS-RfX" firstAttribute="centerY" secondItem="e6o-9w-oKu" secondAttribute="centerY" constant="-16.5" id="GlE-Bp-qwf"/>
-                                    <constraint firstItem="Owf-kS-RfX" firstAttribute="trailing" secondItem="e6o-9w-oKu" secondAttribute="trailingMargin" constant="-11" id="Ice-vx-hxi"/>
+                                    <constraint firstItem="Owf-kS-RfX" firstAttribute="leading" secondItem="f0R-Hg-joN" secondAttribute="trailing" constant="8" id="6h6-Fh-kX2"/>
+                                    <constraint firstItem="f0R-Hg-joN" firstAttribute="top" secondItem="e6o-9w-oKu" secondAttribute="top" constant="8" id="818-0R-t9t"/>
                                     <constraint firstItem="f0R-Hg-joN" firstAttribute="baseline" secondItem="Owf-kS-RfX" secondAttribute="firstBaseline" id="MBd-MM-gha"/>
-                                    <constraint firstAttribute="bottom" secondItem="f0R-Hg-joN" secondAttribute="bottom" constant="39" id="N0H-MX-XAZ"/>
                                     <constraint firstItem="f0R-Hg-joN" firstAttribute="leading" secondItem="e6o-9w-oKu" secondAttribute="leading" constant="3" id="R5C-et-XCB"/>
-                                    <constraint firstItem="Owf-kS-RfX" firstAttribute="bottom" secondItem="e6o-9w-oKu" secondAttribute="bottomMargin" constant="40" id="lIw-Is-pzS"/>
+                                    <constraint firstItem="f0R-Hg-joN" firstAttribute="leading" secondItem="e6o-9w-oKu" secondAttribute="leading" constant="3" id="RuN-qW-cKR"/>
+                                    <constraint firstAttribute="bottom" secondItem="Owf-kS-RfX" secondAttribute="bottom" constant="8" id="UcL-C0-y1r"/>
+                                    <constraint firstAttribute="bottom" secondItem="f0R-Hg-joN" secondAttribute="bottom" constant="8" id="Zdp-pq-ILv"/>
+                                    <constraint firstItem="Owf-kS-RfX" firstAttribute="top" secondItem="e6o-9w-oKu" secondAttribute="top" constant="8" id="dVG-QN-TfS"/>
                                     <constraint firstItem="Owf-kS-RfX" firstAttribute="leading" secondItem="f0R-Hg-joN" secondAttribute="trailing" constant="8" symbolic="YES" id="rE9-Qo-O4B"/>
+                                    <constraint firstAttribute="trailing" secondItem="Owf-kS-RfX" secondAttribute="trailing" constant="8" id="tCX-hk-KTO"/>
+                                    <constraint firstAttribute="height" constant="81" id="vAJ-WS-vNw"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -92,7 +95,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQM-la-OX5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="KXT-mT-k8A">
                     <connections>
-                        <action selector="closeKeyboard:" destination="ajn-oJ-d5Y" id="RcD-bi-B8u"/>
+                        <action selector="closeKeyboard:" destination="ajn-oJ-d5Y" id="Caq-eU-iUu"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
